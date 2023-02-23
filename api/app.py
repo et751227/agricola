@@ -7,7 +7,7 @@ from linebot.models import *
 import os
 
 app = Flask(__name__)
- 
+
 #首頁測試
 @app.route('/')
 def home():
