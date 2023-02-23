@@ -6,9 +6,6 @@ from linebot.models import *
 
 import os
 
-line_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
-handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))
-
 app = Flask(__name__)
  
 #首頁測試
