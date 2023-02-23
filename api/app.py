@@ -34,6 +34,8 @@ def callback():
 @app.route('/')
 def home():
     return 'Hello, World!'
+    return os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
+    return os.getenv("LINE_CHANNEL_SECRET")
  
 #訊息傳遞區塊
 ##### 基本上程式編輯都在這個function #####
