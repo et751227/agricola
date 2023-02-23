@@ -34,8 +34,8 @@ def callback():
 @app.route('/')
 def home():
     return 'Hello, World!'
-    return line_bot_api
-    return handler
+#    return line_bot_api
+#    return handler
  
 #訊息傳遞區塊
 ##### 基本上程式編輯都在這個function #####
