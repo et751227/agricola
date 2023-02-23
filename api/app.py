@@ -6,9 +6,7 @@ from linebot.models import *
 
 import os
 line_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
-line_bot_api_text = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
 handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))
-handler_text = os.getenv("LINE_CHANNEL_SECRET")
 
 app = Flask(__name__)
 
@@ -16,8 +14,25 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return 'Hello, World!'
-    return line_bot_api_text
-    return handler_text
+    
+# 監聽所有來自 /callback 的 Post Request
+@app.route("/callback", methods=['POST'])
+def callback():
+    # get X-Line-Signature header value
+    signature = request.headers['X-Line-Signature']
+ 
+  
+    # get request body as text
+    body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
+ 
+    # handle webhook body
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        abort(400)
+ 
+    return 'OK'
 
 if __name__ == "__main__":
     app.run()
