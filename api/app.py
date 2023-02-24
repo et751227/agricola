@@ -36,7 +36,10 @@ def callback():
 
 #訊息傳遞區塊
 ##### 基本上程式編輯都在這個function #####
+line_bot_api.push_message(os.getenv("USER_ID"), TextSendMessage(text='你可以開始了'))
+
 @line_handler.add(MessageEvent, message=TextMessage)
+
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token,message)
