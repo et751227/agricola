@@ -34,5 +34,12 @@ def callback():
  
     return 'OK'
 
+#訊息傳遞區塊
+##### 基本上程式編輯都在這個function #####
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    message = TextSendMessage(text=event.message.text)
+    line_bot_api.reply_message(event.reply_token,message)
+
 if __name__ == "__main__":
     app.run()
