@@ -17,9 +17,9 @@ class YahooStock(Stock):
         
         #content += "我是yahoo"
         
-        #url = "https://tw.stock.yahoo.com/quote/" + self.stockTicket
+        url = "https://tw.stock.yahoo.com/quote/" + self.stockTicket
         
-        #content += url
+        content += url
         
         response = requests.get(
             "https://tw.stock.yahoo.com/quote/" + self.stockTicket )
