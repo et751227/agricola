@@ -15,7 +15,7 @@ class YahooStock(Stock):
 
     def scrape(self):
         
-        content += self.stockTicket
+        content += "我是yahoo"
         
         #url = "https://tw.stock.yahoo.com/quote/" + self.stockTicket
         

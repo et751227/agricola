@@ -51,10 +51,10 @@ def handle_message(event):
         )
      
     stock = YahooStock(event.message.text)    
-    #message = TextSendMessage(text=stock.scrape())
+    message = TextSendMessage(text=stock.scrape())
     
     line_bot_api.reply_message(
-        event.reply_token,stock      
+        event.reply_token,message      
         )
     
 if __name__ == "__main__":
