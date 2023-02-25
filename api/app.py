@@ -4,7 +4,7 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import *
 
-from .scrape import YahooStock
+from .scraper import YahooStock
 
 import os
 
