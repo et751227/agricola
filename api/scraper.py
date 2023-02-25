@@ -29,7 +29,7 @@ class YahooStock(Stock):
             price = card.find( #股票價格
                 "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)"}).getText()
     
-        content += f"{price}"
+        content += f"股票價格:{price}"
       
         return content
     
