@@ -31,6 +31,6 @@ class YahooStock(StockPrice):
     
         content += f"{price}"
       
-      return content
+    return content
     
  
