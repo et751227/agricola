@@ -14,6 +14,11 @@ class Stock(ABC):
 class YahooStock(Stock):
 
     def scrape(self):
+    
+        url = "https://tw.stock.yahoo.com/quote/" + self.stockTicket
+        
+        content += url
+        
         response = requests.get(
             "https://tw.stock.yahoo.com/quote/" + self.stockTicket )
             
@@ -22,7 +27,7 @@ class YahooStock(Stock):
         cards = soup.find_all(
             'div',{'class':'D(f) Ai(fe) Mb(4px)'})
     
-        content = "沒有找到網頁"
+        content += "沒有找到網頁"
     
         for card in cards:
     
