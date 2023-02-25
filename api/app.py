@@ -44,9 +44,10 @@ line_bot_api.push_message(os.getenv("USER_ID"), TextSendMessage(text='你可以�
 
 def handle_message(event):
     ticket = YahooStock(text=event.message.text)
+    #TextSendMessage(text=ticket.scrape()
     line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=ticket.scrape())
+        event.reply_token,ticket
+        )
         )
     
     
