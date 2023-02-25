@@ -4,7 +4,7 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import *
 
-from .scraper import YahooStock
+from .scrape import YahooStock
 
 import os
 
@@ -44,12 +44,12 @@ line_bot_api.push_message(os.getenv("USER_ID"), TextSendMessage(text='你可以�
 
 def handle_message(event):
 
-    #ticket = YahooStock(text=event.message.text)   
+    ticket = YahooStock(text=event.message.text)   
     #price = text=ticket.scrape()
     
-    #TextSendMessage(text=ticket.scrape())
+    message = TextSendMessage(text=ticket.scrape())
     
-    message = TextSendMessage(text=event.message.text)
+    #message = TextSendMessage(text=event.message.text)
     
     line_bot_api.reply_message(
         event.reply_token,message      
