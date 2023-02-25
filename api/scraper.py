@@ -38,12 +38,16 @@ class YahooStock(Stock):
 
         for card in cards:
         
-            price = card.find( #股票價格
-                "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)"}).getText()
-            if not price:
+            stock_price = card.find( #股票價格
+                "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)"})
+            
+            if not stock_price:
                 price = card.find( #股票價格
                 "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-up)"}).getText()
-        
+            else:
+                price = card.find( #股票價格
+                "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)"}).getText()
+                
         content += f"股票名稱:{stock_name} \n 股票代號:{stock_ticket} \n 股票價格:{price}"
       
         return content
