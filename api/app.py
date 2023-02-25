@@ -38,7 +38,7 @@ def callback():
 
 #訊息傳遞區塊
 ##### 基本上程式編輯都在這個function #####
-line_bot_api.push_message(os.getenv("USER_ID"), TextSendMessage(text='你可以開始了'))
+#line_bot_api.push_message(os.getenv("USER_ID"), TextSendMessage(text='你可以開始了'))
 
 @line_handler.add(MessageEvent, message=TextMessage)
 
