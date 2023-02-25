@@ -1,17 +1,17 @@
 from bs4 import BeautifulSoup
-from stock import STOCK, abstractmethod
+from abc import ABC, abstractmethod
 import requests
 
-class StockPrice(STOCK):
+class Stock(ABC):
 
-    def __init__(self,stockTicket):
+    def __init__(self,ticket):
         self.stockTicket = stockTicket #股票代號
         
     @abstractmethod
     def scrape(self):
         pass
         
-class YahooStock(StockPrice):
+class YahooStock(Stock):
 
     def scrape(self):
         response = requests.get(
