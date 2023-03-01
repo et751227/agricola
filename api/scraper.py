@@ -56,11 +56,11 @@ class YahooStock(Stock):
         stock_dividends = dividends_soup.find('ul',{"class":'List(n)'})
         
         stock_dividends_season = stock_dividends.find('div',{"class":'D(f) W(84px) Ta(start)'}).get_text()
-        stock_dividends_money =""
-        stock_dividends_son =""
-        stock_dividends_delete =""
-        stock_dividends_get =""
-        stock_dividends_recover = ""
+        stock_dividends_money = stock_dividends.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(62px)'}).get_text()
+        stock_dividends_son = stock_dividends.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(62px)'}).get_text()
+        stock_dividends_delete = stock_dividends.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(108px)'}).get_text()
+        stock_dividends_get = stock_dividends.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(108px)'}).get_text()
+        stock_dividends_recover = stock_dividends.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(70px)'}).get_text()
         
         content += f"股票名稱:{stock_name} \n"\
                     f"股票代號:{stock_ticket} \n"\
