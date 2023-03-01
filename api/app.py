@@ -38,24 +38,19 @@ def callback():
 
 #訊息傳遞區塊
 ##### 基本上程式編輯都在這個function #####
-#line_bot_api.push_message(os.getenv("USER_ID"), TextSendMessage(text='你可以開始了'))
 
 @line_handler.add(MessageEvent, message=TextMessage)
 
 def handle_message(event):
-      
-    #message2 = TextSendMessage(text=event.message.text)
-        
-    #line_bot_api.reply_message(
-    #    event.reply_token,message2      
-    #    )
-     
+         
     stock = YahooStock(event.message.text)    
     message = TextSendMessage(text=stock.scrape())
     
-    line_bot_api.reply_message(
-        event.reply_token,message      
-        )
+    line_bot_api.reply_message(event.reply_token,message)
+    
+    if "股利 " in message:
+        line_bot_api.push_message(os.getenv("USER_ID"), TextSendMessage(text='股利測試'))
+
     
 if __name__ == "__main__":
     app.run()
