@@ -47,8 +47,26 @@ class YahooStock(Stock):
             else:
                 price = card.find( #股票價格
                 "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)"}).getText()
+        
+        dividends_response = requests.get(
+            "https://tw.stock.yahoo.com/quote/" + self.stockTicket + "/dividend")
+        
+        dividends_soup = BeautifulSoup(dividends_response.content, "html.parser")
                 
-        content += f"股票名稱:{stock_name} \n 股票代號:{stock_ticket} \n 股票價格:{price}"
+        stock_dividends = dividends_soup.find('ul',{"class":'List(n)'})
+        
+        stock_dividends_season = stock_dividends.find('div',{"class":'D(f) W(84px) Ta(start)'}).get_text()
+        
+        content += f"股票名稱:{stock_name} \n"\
+                    "股票代號:{stock_ticket} \n"\
+                    "股票價格:{price} \n"\
+                    "------------------------ \n"\
+                    "股利所屬期間:{stock_dividends_season} \n"\
+                    "現金股利:{stock_dividends_money} \n"\
+                    "股票股利:{stock_dividends_son} \n"\
+                    "除息日:{stock_dividends_delete} \n"\
+                    "發放日:{stock_dividends_get} \n"\
+                    "填息天數:{stock_dividends_recover} \n"
       
         return content
     
