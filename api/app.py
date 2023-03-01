@@ -42,15 +42,14 @@ def callback():
 @line_handler.add(MessageEvent, message=TextMessage)
 
 def handle_message(event):
-         
-    stock = YahooStock(event.message.text)    
-    message = TextSendMessage(text=stock.scrape())
-    
-    line_bot_api.reply_message(event.reply_token,message)
-    
+
     if "股利 " in message:
         line_bot_api.push_message(os.getenv("USER_ID"), TextSendMessage(text='股利測試'))
-
+    else:
+        stock = YahooStock(event.message.text)    
+        message = TextSendMessage(text=stock.scrape())
+    
+        line_bot_api.reply_message(event.reply_token,message)
     
 if __name__ == "__main__":
     app.run()
