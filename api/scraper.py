@@ -56,9 +56,12 @@ class YahooStock(Stock):
         stock_dividends = dividends_soup.find_all('div',{"class":'Bgc(#fff) table-row D(f) Ai(c) Bgc(#e7f3ff):h Fz(16px) Px(12px) Bxz(bb) Bdbs(s) Bdbw(1px) Bdbc($bd-primary-divider) H(40px)'})
         
         for stock_dividend in reversed(stock_dividends):
+        
+                print(stock_dividend)
+        
                 stock_dividends_season = stock_dividend.find('div',{"class":'D(f) W(84px) Ta(start)'}).get_text()
                 stock_dividends_money = stock_dividend.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(62px)'}).get_text()
-                stock_dividends_son = stock_dividend[1].find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(62px)'}).get_text()
+                stock_dividends_son = stock_dividend.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(62px)'}).get_text()
                 stock_dividends_delete = stock_dividend.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(108px)'}).get_text()
                 stock_dividends_get = stock_dividend.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(108px)'}).get_text()
                 stock_dividends_recover = stock_dividend.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(70px)'}).get_text()
