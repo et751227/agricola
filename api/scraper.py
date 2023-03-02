@@ -14,7 +14,9 @@ class Stock(ABC):
 class YahooStock(Stock):
 
     def scrape(self):
-    
+        stock_price_down =""
+        stock_price_up =""
+        stock_price_flat =""
         content = ""
    
         response = requests.get(
