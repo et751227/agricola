@@ -62,11 +62,11 @@ class YahooStock(Stock):
                 stock_dividends_get = stock_dividend.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(108px)'}).get_text()
                 stock_dividends_recover = stock_dividend.find('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(70px)'}).get_text()
                 
-                stock_dividends_money_get = stock_dividend.find_all('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(62px)'})      
-        
-                for stock_dividend_money in stock_dividends_money_get:
-                        stock_dividends_money = stock_dividend_money.get_text()
-                        stock_dividends_son = stock_dividend_money.get_text()
+                stock_dividends_money_get = stock_dividend[0].find_all('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(62px)'})            
+                stock_dividends_money = stock_dividend_money.get_text()
+                
+                stock_dividends_son_get = stock_dividend[1].find_all('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(62px)'})
+                stock_dividends_son = stock_dividends_son_get.get_text()
                 
 
         
