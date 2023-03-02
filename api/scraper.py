@@ -49,7 +49,7 @@ class YahooStock(Stock):
             stock_price_flat = card.find( #股票價格_持平
                 "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c)"})  
                 
-            if tock_price_down:
+            if stock_price_down:
                 price = card.find( #股票價格
                 "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)"}).getText()
             elif stock_price_up:
