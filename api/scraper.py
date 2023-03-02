@@ -38,15 +38,24 @@ class YahooStock(Stock):
 
         for card in cards:
         
-            stock_price = card.find( #股票價格
+            stock_price_down = card.find( #股票價格_下跌
                 "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)"})
-            
-            if not stock_price:
-                price = card.find( #股票價格
-                "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-up)"}).getText()
-            else:
+                
+            stock_price_up = card.find( #股票價格_上漲
+                "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-up)"})
+                
+            stock_price_flat = card.find( #股票價格_持平
+                "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c)"})  
+                
+            if not stock_price_down:
                 price = card.find( #股票價格
                 "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-down)"}).getText()
+            elif not stock_price_up:
+                price = card.find( #股票價格
+                "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c) C($c-trend-up)"}).getText()
+            elif not stock_price_flat:
+                 price = card.find( #股票價格
+                "span",{"class":"Fz(32px) Fw(b) Lh(1) Mend(16px) D(f) Ai(c)"}).getText()
         
         dividends_response = requests.get(
             "https://tw.stock.yahoo.com/quote/" + self.stockTicket + "/dividend")
