@@ -18,7 +18,15 @@ class YahooStock(Stock):
         stock_price_up =""
         stock_price_flat =""
         content = ""
-   
+        stock_dividends_season = ""
+        stock_dividends_delete = ""
+        stock_dividends_get = ""
+        stock_dividends_recover = ""
+        stock_dividends_money_get = ""
+        stock_dividends_money = ""
+        stock_dividends_son_get = ""
+        stock_dividends_son = ""
+                  
         response = requests.get(
             "https://tw.stock.yahoo.com/quote/" + self.stockTicket )
             
@@ -78,9 +86,7 @@ class YahooStock(Stock):
                 
                 stock_dividends_son_get = stock_dividend.find_all('div',{"class":'Fxg(1) Fxs(1) Fxb(0%) Ta(end) Mend($m-table-cell-space) Mend(0):lc Miw(62px)'})
                 stock_dividends_son = stock_dividends_son_get[1].get_text()
-                
-
-        
+                                 
         content += f"股票名稱:{stock_name} \n"\
                     f"股票代號:{stock_ticket} \n"\
                     f"股票價格:{price} \n"\
