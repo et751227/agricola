@@ -16,7 +16,7 @@ app = Flask(__name__)
 #首頁測試
 @app.route('/')
 def home():
-    return 'Hello, World!'
+    return line_bot_api
     
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
